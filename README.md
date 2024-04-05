@@ -34,16 +34,16 @@ Now you can use the `LDFlag` component to conditionally render content based on 
 
 ```svelte
 <script>
-	import { LDFlag } from 'launchdarkly-svelte-client-sdk';
+    import { LDFlag } from 'launchdarkly-svelte-client-sdk';
 </script>
 
 <LDFlag flag={'my-feature-flag'}>
-	<div slot="on">
-		<p>this will render if the feature flag is on</p>
-	</div>
-	<div slot="off">
-		<p>this will render if the feature flag is off</p>
-	</div>
+    <div slot="on">
+        <p>this will render if the feature flag is on</p>
+    </div>
+    <div slot="off">
+        <p>this will render if the feature flag is off</p>
+    </div>
 </LDFlag>
 ```
 
@@ -55,9 +55,9 @@ You can change the user context by using the `identify` function from the `LD` o
 
 ```svelte
 <script>
-	import { LD } from 'launchdarkly-svelte-client-sdk';
+    import { LD } from 'launchdarkly-svelte-client-sdk';
 
-    funtion handleLogin() {
+    function handleLogin() {
         LD.identify({ key: 'new-user-key' });
     }
 </script>
@@ -73,12 +73,12 @@ If you need to get the value of a flag at time of evaluation you can use the `is
 
 ```svelte
 <script>
-	import { LD } from 'launchdarkly-svelte-client-sdk';
+    import { LD } from 'launchdarkly-svelte-client-sdk';
 
-	function handleClick() {
-		const isFeatureFlagOn = LD.isOn('my-feature-flag');
-		console.log(isFeatureFlagOn);
-	}
+    function handleClick() {
+        const isFeatureFlagOn = LD.isOn('my-feature-flag');
+        console.log(isFeatureFlagOn);
+    }
 </script>
 
 <button on:click={handleClick}>Check flag value</button>
@@ -92,9 +92,9 @@ If you need to get notified when a flag value changes you can use the `watch` fu
 
 ```svelte
 <script>
-	import { LD } from 'launchdarkly-svelte-client-sdk';
+    import { LD } from 'launchdarkly-svelte-client-sdk';
 
-	$: flagValue = LD.watch('my-feature-flag');
+    $: flagValue = LD.watch('my-feature-flag');
 </script>
 
 <p>{$flagValue}</p>
@@ -106,13 +106,13 @@ If you need to get all flag values you can use the `flags` object. The `flags` o
 
 ```svelte
 <script>
-	import { LD } from 'launchdarkly-svelte-client-sdk';
+    import { LD } from 'launchdarkly-svelte-client-sdk';
 
-	$: allFlags = LD.flags;
+    $: allFlags = LD.flags;
 </script>
 
 {#each Object.keys($allFlags) as flagName}
-	<p>{flagName}: {$allFlags[flagName]}</p>
+    <p>{flagName}: {$allFlags[flagName]}</p>
 {/each}
 ```
 
